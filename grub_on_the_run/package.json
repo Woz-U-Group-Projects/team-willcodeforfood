@@ -1,0 +1,35 @@
+{
+  "name": "grub-on-the-run",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "cassandra-driver": "^4.0.0",
+    "connect-ensure-login": "^0.1.1",
+    "cookie-parser": "~1.4.3",
+    "couchbase": "^2.6.2",
+    "debug": "~2.6.9",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "hbs": "~4.0.1",
+    "http-errors": "~1.6.2",
+    "jsonwebtoken": "^8.4.0",
+    "level": "^4.0.0",
+    "leveldown": "^4.0.1",
+    "levelup": "^4.0.0",
+    "morgan": "~1.9.0",
+    "mysql": "^2.16.0",
+    "nano": "^8.0.0",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-local": "^1.0.0",
+    "tedious": "^4.1.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
