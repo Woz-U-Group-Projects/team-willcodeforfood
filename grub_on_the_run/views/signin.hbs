@@ -1,0 +1,21 @@
+
+<head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/signin.css' />
+</head>
+<h1>Welcome! Please log in</h1>
+
+<form id="signin" name="signin" method="POST" action="/users/signin">
+    <div>
+        <label for="name">Email: </label>
+        <input type="text" name="email" required>
+    </div>
+    <div>
+        <label for="name">Password: </label>
+        <input type="text" name="password" required>
+    </div>
+    <div>
+        <button type="submit">Sign In</button>
+    </div>
+</form>
+<a href="/users/signin/facebook">Login with Facebook</a>
