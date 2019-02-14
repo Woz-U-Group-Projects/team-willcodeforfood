@@ -84,4 +84,4 @@ const TruckProfileSchema = new Schema({
   }
 });
 
-module.exports = Profile = mongoose.model("truckprofile", TruckProfileSchema);
+module.exports = Truck = mongoose.model("truck", TruckProfileSchema);
