@@ -14,13 +14,13 @@ const validateLoginInput = require("../../validation/login");
 const User = require("../../models/User");
 
 // @route   GET api/users/test
-//@desc     Tests users route
-//@access   Public
+// @desc    Tests users route
+// @access  Public
 router.get("/test", (req, res) => res.json({ msg: "Users Works" }));
 
-// @route   GET api/users/register
-//@desc     Register user
-//@access   Public
+// @route   POST api/users/register
+// @desc    Register user
+// @access  Public
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
 
@@ -62,8 +62,8 @@ router.post("/register", (req, res) => {
 });
 
 // @route   GET api/users/login
-//@desc     Login user / Returning JWT Token
-//@access   Public
+// @desc    Login User / Returning JWT Token
+// @access  Public
 router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
 
@@ -79,18 +79,17 @@ router.post("/login", (req, res) => {
   User.findOne({ email }).then(user => {
     // Check for user
     if (!user) {
-      errors.eamil = "User not found";
+      errors.email = "User not found";
       return res.status(404).json(errors);
     }
 
-    // Check for password
+    // Check Password
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
         // User Matched
-
         const payload = { id: user.id, name: user.name, avatar: user.avatar }; // Create JWT Payload
 
-        // sign Token
+        // Sign Token
         jwt.sign(
           payload,
           keys.secretOrKey,
@@ -111,8 +110,8 @@ router.post("/login", (req, res) => {
 });
 
 // @route   GET api/users/current
-//@desc     Return current user
-//@access   Private
+// @desc    Return current user
+// @access  Private
 router.get(
   "/current",
   passport.authenticate("jwt", { session: false }),

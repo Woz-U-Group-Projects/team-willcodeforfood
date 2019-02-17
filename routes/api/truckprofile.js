@@ -18,9 +18,9 @@ const User = require("../../models/User");
 //@access   Public
 router.get("/test", (req, res) => res.json({ msg: "Profile Works" }));
 
-// @route   GET api/truck
-//@desc     Get current truck profile
-//@access   private
+// @route   GET api/profile
+// @desc    Get current users profile
+// @access  Private
 router.get(
   "/",
   passport.authenticate("jwt", { session: false }),
@@ -28,12 +28,13 @@ router.get(
     const errors = {};
 
     Truck.findOne({ user: req.user.id })
+      .populate("user", ["name", "avatar"])
       .then(truck => {
         if (!truck) {
           errors.noprofile = "There is no profile for this user";
           return res.status(404).json(errors);
         }
-        res.json(truck);
+        res.json(profile);
       })
       .catch(err => res.status(404).json(err));
   }
@@ -43,10 +44,10 @@ router.get(
 //@desc     Get all profiles
 //@access   public
 router.get("/all", (req, res) => {
-  Profile.find()
+  Truck.find()
     .populate("user", ["name", "avatar"])
-    .then(profiles => {
-      if (!profiles) {
+    .then(truck => {
+      if (!truck) {
         errors.noprofile = "There are no profiles";
         return res.status(404).json();
       }
