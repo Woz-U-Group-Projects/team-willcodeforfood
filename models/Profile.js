@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+import './Profile.css';
 
 // Created Schema
 const UserProfileSchema = new Schema({
