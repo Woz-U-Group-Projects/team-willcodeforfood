@@ -25,10 +25,7 @@ const TruckProfileSchema = new Schema({
       location: {
         type: String
       },
-      open: {
-        type: Date
-      },
-      close: {
+      hours: {
         type: Date
       },
       description: {
