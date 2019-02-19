@@ -3,60 +3,52 @@ import Moment from "react-moment";
 
 class ProfileCreds extends Component {
   render() {
-    const { experience, education } = this.props;
+    const { truck, menu } = this.props;
 
-    const expItems = experience.map(exp => (
-      <li key={exp._id} className="list-group-item">
-        <h4>{exp.company}</h4>
+    const truckItems = truck.map(tru => (
+      <li key={tru._id} className="list-group-item">
         <p>
-          <Moment format="YYYY/MM/DD">{exp.from}</Moment> -
-          {exp.to === null ? (
-            " Now"
-          ) : (
-            <Moment format="YYYY/MM/DD">{exp.to}</Moment>
-          )}
+          <strong>Name:</strong> {tru.title}
         </p>
         <p>
-          <strong>Position:</strong> {exp.title}
-        </p>
-        <p>
-          {exp.location === "" ? null : (
+          {tru.location === "" ? null : (
             <span>
-              <strong>Location: </strong> {exp.location}
+              <strong>Location: </strong> {tru.location}
             </span>
           )}
         </p>
         <p>
-          {exp.description === "" ? null : (
+          {tru.description === "" ? null : (
             <span>
-              <strong>Description: </strong> {exp.description}
+              <strong>Description: </strong> {tru.description}
             </span>
           )}
+          <h4>{tru.hours}</h4>
+          <p>
+            <Moment format="YYYY/MM/DD">{tru.from}</Moment> -
+            {tru.to === null ? (
+              " Now"
+            ) : (
+              <Moment format="YYYY/MM/DD">{tru.to}</Moment>
+            )}
+          </p>
         </p>
       </li>
     ));
 
-    const eduItems = education.map(edu => (
-      <li key={edu._id} className="list-group-item">
-        <h4>{edu.school}</h4>
+    const menItems = menu.map(men => (
+      <li key={men._id} className="list-group-item">
+        <h4>{men.avatar}</h4>
         <p>
-          <Moment format="YYYY/MM/DD">{edu.from}</Moment> -
-          {edu.to === null ? (
-            " Now"
-          ) : (
-            <Moment format="YYYY/MM/DD">{edu.to}</Moment>
-          )}
+          <strong>Pricing:</strong> {men.price}
         </p>
         <p>
-          <strong>Degree:</strong> {edu.degree}
+          <strong>Item:</strong> {men.title}
         </p>
         <p>
-          <strong>Field Of Study:</strong> {edu.fieldofstudy}
-        </p>
-        <p>
-          {edu.description === "" ? null : (
+          {men.description === "" ? null : (
             <span>
-              <strong>Description: </strong> {edu.description}
+              <strong>Description: </strong> {men.description}
             </span>
           )}
         </p>
@@ -65,20 +57,20 @@ class ProfileCreds extends Component {
     return (
       <div className="row">
         <div className="col-md-6">
-          <h3 className="text-center text-info">Experience</h3>
-          {expItems.length > 0 ? (
-            <ul className="list-group">{expItems}</ul>
+          <h3 className="text-center text-info">Truck</h3>
+          {truckItems.length > 0 ? (
+            <ul className="list-group">{truckItems}</ul>
           ) : (
-            <p className="text-center">No Experience Listed</p>
+            <p className="text-center">No Truck Listed</p>
           )}
         </div>
 
         <div className="col-md-6">
-          <h3 className="text-center text-info">Education</h3>
-          {eduItems.length > 0 ? (
-            <ul className="list-group">{eduItems}</ul>
+          <h3 className="text-center text-info">Menu</h3>
+          {menItems.length > 0 ? (
+            <ul className="list-group">{menItems}</ul>
           ) : (
-            <p className="text-center">No Education Listed</p>
+            <p className="text-center">No menu Listed</p>
           )}
         </div>
       </div>

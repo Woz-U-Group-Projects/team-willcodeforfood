@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import classnames from "classnames";
 import { loginUser } from "../../actions/authActions";
 import TextFieldGroup from "../common/TextFieldGroup";
 
@@ -13,12 +12,6 @@ class Login extends Component {
       password: "",
       errors: {}
     };
-  }
-
-  componentDidMount() {
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
-    }
   }
 
   componentDidMount() {
@@ -62,7 +55,7 @@ class Login extends Component {
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Log In</h1>
               <p className="lead text-center">
-                Sign in to your Grub On The Run account
+                Sign In To Your Grub On The Run Account
               </p>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
